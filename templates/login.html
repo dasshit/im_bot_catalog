@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="auth-form">
+            <form action="/bots/login/auth/" method="post">
+                {# Include the hidden fields #}
+                {% for hidden in form.hidden_fields %}
+                    {{ hidden }}
+                {% endfor %}
+                {# Include the visible fields #}
+                {% csrf_token %}
+                {% for field in form.visible_fields %}
+                    <div class="fieldWrapper">
+                        {{ field.errors }}
+                        {{ field.label_tag }}
+                        <br>
+                        {{ field }}
+                    </div>
+                    <br>
+                {% endfor %}
+                <input type="submit" value="Submit" class="login-submit-button">
+            </form>
+        </div>
+{% endblock %}

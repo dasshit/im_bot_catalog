@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'bots/css/base.css'%}" type="text/css">
+    <link rel="shortcut icon" type="image/png" href="{% static 'bots/img/favicon.ico' %}"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+    <div class="header-content">
+        <div class="header-content-wrap">
+            <div class="header-logo-wrap">
+                <img class="header-logo" src="{% static 'bots/img/logo.svg' %}" alt="img"/>
+            </div>
+            <div class="header-menu">
+                <div class="header-menu-links">
+                    {% for link in links %}
+                        <a class="header-link" href="{{ link.href }}">{{ link.text }}</a>
+                    {% endfor %}
+                    <a class="header-link" href="/bots/help/">Help</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
